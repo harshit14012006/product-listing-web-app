@@ -1,0 +1,10 @@
+@keyframes moveWave {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-1440px); } /* Moves full width */
+}
+
+.wave-animation {
+    display: flex;
+    width: 2880px; /* Twice the width to loop seamlessly */
+    animation: moveWave 10s linear infinite;
+}

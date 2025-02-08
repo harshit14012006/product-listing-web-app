@@ -10,7 +10,8 @@ const tailwindConfig = {
         secondary: "#FF9800", // Custom secondary color
       },
       fontFamily: {
-        sans: ["Inter", "sans-serif"], // Custom font
+        sans: ["Poppins", "sans-serif"],
+        serif: ["Playfair Display", "serif"],
       },
       boxShadow: {
         "3d": "4px 4px 10px rgba(0,0,0,0.2), -4px -4px 10px rgba(255,255,255,0.2)", // 3D-like shadow
