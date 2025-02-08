@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Toys from "./pages/Toys";
 import Crockery from "./pages/Crockery";
@@ -10,7 +9,6 @@ import Contact from "./pages/Contact";
 export default function RoutingUser() {
     return (
         <Router>
-            {/* <Navbar />  Navbar stays persistent across pages */}
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/toys" element={<Toys />} />

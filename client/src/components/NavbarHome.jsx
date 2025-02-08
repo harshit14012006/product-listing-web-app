@@ -1,10 +1,11 @@
+import { Link } from "react-router-dom";
 import { Search, User, Heart, ShoppingCart, Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function NavbarHome() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const [textColor, setTextColor] = useState("#184a45"); // Default color
+    const [textColor, setTextColor] = useState("#184a45");
 
     useEffect(() => {
         const updateNavbarColor = () => {
@@ -13,15 +14,9 @@ export default function NavbarHome() {
 
             const bgColor = window.getComputedStyle(slider).backgroundColor;
             const [r, g, b] = bgColor.match(/\d+/g).map(Number);
-
-            // Calculate brightness using luminance formula
             const brightness = (r * 0.299 + g * 0.587 + b * 0.114);
 
-            if (brightness > 150) {
-                setTextColor("#184a45"); // Dark teal for light backgrounds
-            } else {
-                setTextColor("#e5ede9"); // Light green for dark backgrounds
-            }
+            setTextColor(brightness > 150 ? "#184a45" : "#e5ede9");
         };
 
         updateNavbarColor();
@@ -35,34 +30,40 @@ export default function NavbarHome() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="absolute top-0 left-0 w-full z-50 px-6 py-4 flex items-center justify-between backdrop-blur-md bg-transparent"
-            style={{ color: textColor }} // Dynamic text color
+            style={{ color: textColor }}
         >
-            {/* Left - Logo */}
+            {/* Logo */}
             <motion.div
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300 }}
                 className="text-2xl font-bold cursor-pointer"
-                style={{ color: "#d87a38" }} // Logo always orange
             >
-                Play<span style={{ color: textColor }}>Plates</span>
+                <Link to="/" style={{ color: "#d87a38" }}>
+                    Play<span style={{ color: textColor }}>Plates</span>
+                </Link>
             </motion.div>
 
             {/* Desktop Navigation */}
             <ul className="hidden lg:flex space-x-6 font-medium">
-                {["Home", "Toys", "Crockery", "Gift Sets", "Offers", "Contact"].map((item) => (
+                {["Home", "Toys", "Crockery", "Gift Sets", "Offers", "Contact"].map((item, index) => (
                     <motion.li
-                        key={item}
+                        key={index}
                         whileHover={{ scale: 1.1 }}
                         transition={{ type: "spring", stiffness: 300 }}
                         className="relative cursor-pointer transition-all duration-300 group"
-                        style={{ color: textColor }}
                     >
-                        {item}
+                        <Link
+                            to={item === "Home" ? "/" : `/${item.toLowerCase().replace(" ", "-")}`}
+                            style={{ color: textColor }}
+                        >
+                            {item}
+                        </Link>
                         <motion.span
                             className="absolute left-0 bottom-0 w-0 h-[2px] bg-[#d87a38] transition-all duration-300 group-hover:w-full"
                         />
                     </motion.li>
                 ))}
+
             </ul>
 
             {/* Search Bar */}
@@ -88,7 +89,9 @@ export default function NavbarHome() {
                         whileHover={{ scale: 1.02 }}
                         transition={{ type: "spring", stiffness: 300 }}
                     >
-                        <Icon className="w-6 h-6 cursor-pointer transition-all duration-300" style={{ color: textColor }} />
+                        <Link to={index === 0 ? "/account" : index === 1 ? "/wishlist" : "/cart"}>
+                            <Icon className="w-6 h-6 cursor-pointer transition-all duration-300" style={{ color: textColor }} />
+                        </Link>
                     </motion.div>
                 ))}
                 <motion.div
@@ -120,13 +123,16 @@ export default function NavbarHome() {
                             transition={{ duration: 0.3, delay: 0.2 }}
                             className="flex justify-between items-center p-6 bg-[#F9F4EF] border-b border-[#e4a672]"
                         >
-                            <div className="text-2xl font-bold text-[#d87a38]">PlayPlates</div>
+                            <Link to="/" className="text-2xl font-bold text-[#d87a38]">
+                                PlayPlates
+                            </Link>
                             <X
                                 className="w-7 h-7 cursor-pointer text-[#6a4826] hover:text-[#d87a38] transition-all"
                                 onClick={() => setMobileMenuOpen(false)}
                             />
                         </motion.div>
 
+                        {/* Mobile Menu Items */}
                         {/* Mobile Menu Items */}
                         <motion.ul
                             initial={{ opacity: 0, y: 20 }}
@@ -135,20 +141,24 @@ export default function NavbarHome() {
                             transition={{ duration: 0.3, delay: 0.1 }}
                             className="flex flex-col items-center space-y-6 mt-10 text-lg font-medium bg-[#F9F4EF]"
                         >
-                            {["Home", "Toys", "Crockery", "Gift Sets", "Offers", "Contact"].map(
-                                (item) => (
-                                    <motion.li
-                                        key={item}
-                                        whileHover={{ scale: 1.1 }}
-                                        transition={{ type: "spring", stiffness: 300 }}
-                                        className="cursor-pointer transition-all duration-300 text-[#6a4826] hover:text-[#d87a38]"
-                                        onClick={() => setMobileMenuOpen(false)}
+                            {["Home", "Toys", "Crockery", "Gift Sets", "Offers", "Contact"].map((item, index) => (
+                                <motion.li
+                                    key={index}
+                                    whileHover={{ scale: 1.1 }}
+                                    transition={{ type: "spring", stiffness: 300 }}
+                                    className="cursor-pointer transition-all duration-300 text-[#6a4826] hover:text-[#d87a38]"
+                                    onClick={() => setMobileMenuOpen(false)}
+                                >
+                                    <Link
+                                        to={item === "Home" ? "/" : `/${item.toLowerCase().replace(" ", "-")}`}
+                                        className="block w-full text-center"
                                     >
                                         {item}
-                                    </motion.li>
-                                )
-                            )}
+                                    </Link>
+                                </motion.li>
+                            ))}
                         </motion.ul>
+
 
                         {/* Mobile Search Bar */}
                         <motion.div
