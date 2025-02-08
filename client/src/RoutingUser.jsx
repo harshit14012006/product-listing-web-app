@@ -5,7 +5,7 @@ import Crockery from "./pages/Crockery";
 import GiftSets from "./pages/GiftSets";
 import OffersUser from "./pages/OffersUser";
 import Contact from "./pages/Contact";
-
+import Footer from './components/Footer'
 export default function RoutingUser() {
     return (
         <Router>
@@ -17,6 +17,7 @@ export default function RoutingUser() {
                 <Route path="/offers" element={<OffersUser />} />
                 <Route path="/contact" element={<Contact />} />
             </Routes>
+            <Footer/>
         </Router>
     );
 }
