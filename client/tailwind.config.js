@@ -1,23 +1,23 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+const tailwindConfig = {
   content: [
-    "./src/**/*.{js,jsx,ts,tsx}", // Include all JS, JSX, TS, and TSX files in the src folder
+    "./src/**/*.{js,jsx,ts,tsx}", // Scans all JS, JSX, TS, and TSX files in /src
   ],
   theme: {
     extend: {
-      animation: {
-        fadeInLeft: 'fadeInLeft 1s ease-in-out',
+      colors: {
+        primary: "#4CAF50", // Custom primary color
+        secondary: "#FF9800", // Custom secondary color
       },
       fontFamily: {
-        sans: ['Poppins', 'sans-serif'],
+        sans: ["Inter", "sans-serif"], // Custom font
       },
-      keyframes: {
-        fadeInLeft: {
-          '0%': { opacity: '0', transform: 'translateX(-100%)' },
-          '100%': { opacity: '1', transform: 'translateX(0)' },
-        },
+      boxShadow: {
+        "3d": "4px 4px 10px rgba(0,0,0,0.2), -4px -4px 10px rgba(255,255,255,0.2)", // 3D-like shadow
       },
     },
   },
   plugins: [],
 };
+
+export default tailwindConfig;
