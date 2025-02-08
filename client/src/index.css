@@ -28,7 +28,7 @@ code {
 
 /* Scrollbar Track */
 ::-webkit-scrollbar-track {
-  background: #f3f3f3;
+  background: transparent;
   border-radius: 10px;
 }
 
