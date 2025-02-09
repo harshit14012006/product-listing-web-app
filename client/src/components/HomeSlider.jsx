@@ -78,7 +78,7 @@ export default function HomeSlider() {
                             <div className="flex flex-col-reverse lg:flex-row items-center max-w-7xl w-full h-[52vh]">
                                 {/* Left: Text Content */}
                                 <motion.div
-                                    className="lg:w-1/2 text-center lg:text-left space-y-4"
+                                    className="space-y-4 text-center lg:w-1/2 lg:text-left"
                                     initial={{ opacity: 0, x: -50 }}
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ duration: 1 }}
@@ -92,9 +92,9 @@ export default function HomeSlider() {
                                     <p className="text-gray-700">{slide.description}</p>
 
                                     {/* SHOP NOW Button */}
-                                    <div className="mt-6 flex justify-center lg:justify-start">
+                                    <div className="flex justify-center mt-6 lg:justify-start">
                                         <button className="flex items-center bg-[#262424] text-white px-6 py-3 rounded-full font-semibold shadow-md transition-all duration-300 relative group overflow-hidden">
-                                            <span className="mr-5 tracking-wide relative z-10">SHOP NOW</span>
+                                            <span className="relative z-10 mr-5 tracking-wide">SHOP NOW</span>
                                             <span className="w-7 h-7 rounded-full bg-white flex items-center justify-center border border-[#262424] transition-transform duration-300 relative z-10">
                                                 <svg
                                                     xmlns="http://www.w3.org/2000/svg"
@@ -112,14 +112,14 @@ export default function HomeSlider() {
 
                                             {/* Hover Effects */}
                                             <div className="absolute inset-0 bg-gradient-to-r from-[#3e3e3e] to-[#1b1b1b] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                                            <div className="absolute w-full h-full top-0 left-0 scale-100 group-hover:scale-105 transition-transform duration-300"></div>
+                                            <div className="absolute top-0 left-0 w-full h-full transition-transform duration-300 scale-100 group-hover:scale-105"></div>
                                         </button>
                                     </div>
                                 </motion.div>
 
                                 {/* Right: Image */}
                                 <motion.div
-                                    className="lg:w-1/2 flex justify-center mt-6 lg:mt-0"
+                                    className="flex justify-center mt-6 lg:w-1/2 lg:mt-0"
                                     initial={{ opacity: 0, x: 50 }}
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ duration: 1 }}
@@ -135,14 +135,14 @@ export default function HomeSlider() {
                     </SwiperSlide>
                 ))}
                 {/* Navigation Buttons */}
-                <div className="absolute bottom-5 right-1  transform -translate-x-1/3 flex space-x-4 z-20">
-                    <button className="w-12 h-12 flex items-center justify-center rounded-full border-[3px] border-gray-700 bg-white shadow-lg transition-all hover:scale-110">
+                <div className="absolute z-20 flex space-x-4 transform bottom-5 right-1 -translate-x-1/3">
+                    <button className="w-12 h-12 flex items-center justify-center rounded-full border-[3px] border-gray-700 bg-white shadow-lg transition-all hover:scale-105">
                         <ChevronRight className="text-gray-500" size={20} />
                     </button>
                 </div>
 
-                <div className="absolute bottom-5 right-12  transform -translate-x-1/2 flex space-x-4 z-20">
-                    <button className="w-12 h-12 flex items-center justify-center rounded-full border-[3px] border-gray-700 bg-white shadow-lg transition-all hover:scale-110">
+                <div className="absolute z-20 flex space-x-4 transform -translate-x-1/2 bottom-5 right-12">
+                    <button className="w-12 h-12 flex items-center justify-center rounded-full border-[3px] border-gray-700 bg-white shadow-lg transition-all hover:scale-105">
                         <ChevronLeft className="text-gray-500" size={20} />
                     </button>
                 </div>

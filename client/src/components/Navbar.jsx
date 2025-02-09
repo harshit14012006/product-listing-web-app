@@ -1,63 +1,43 @@
 import { Search, User, Heart, ShoppingCart, Menu, X } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const [textColor, setTextColor] = useState("#184a45"); // Default color
 
-    useEffect(() => {
-        const updateNavbarColor = () => {
-            const slider = document.getElementById("slider-section");
-            if (!slider) return;
-
-            const bgColor = window.getComputedStyle(slider).backgroundColor;
-            const [r, g, b] = bgColor.match(/\d+/g).map(Number);
-
-            // Calculate brightness using luminance formula
-            const brightness = (r * 0.299 + g * 0.587 + b * 0.114);
-
-            if (brightness > 150) {
-                setTextColor("#184a45"); // Dark teal for light backgrounds
-            } else {
-                setTextColor("#e5ede9"); // Light green for dark backgrounds
-            }
-        };
-
-        updateNavbarColor();
-        window.addEventListener("scroll", updateNavbarColor);
-        return () => window.removeEventListener("scroll", updateNavbarColor);
-    }, []);
+    const navLinks = [
+        { name: "Home", path: "/" },
+        { name: "Toys", path: "/toys" },
+        { name: "Crockery", path: "/crockery" },
+        { name: "Gift Sets", path: "/gift-sets" },
+        { name: "Offers", path: "/offers" },
+        { name: "Contact", path: "/contact" }
+    ];
 
     return (
         <motion.nav
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="absolute top-0 left-0 w-full z-50 px-6 py-4 flex items-center justify-between backdrop-blur-md bg-transparent"
-            style={{ color: textColor }} // Dynamic text color
+            className="bg-[#fdf5e6] px-6 py-4 flex items-center justify-between border-b border-[#e4a672] shadow-lg rounded-b-xl"
         >
             {/* Left - Logo */}
-            <motion.div
-                whileHover={{ scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 300 }}
-                className="text-2xl font-bold cursor-pointer"
-                style={{ color: "#d87a38" }} // Logo always orange
-            >
-                Play<span style={{ color: textColor }}>Plates</span>
-            </motion.div>
+            <Link to="/" className="text-2xl font-bold text-[#d87a38] cursor-pointer">
+                Play<span className="text-[#6a4826]">Plates</span>
+            </Link>
 
             {/* Desktop Navigation */}
-            <ul className="hidden lg:flex space-x-6 font-medium">
-                {["Home", "Toys", "Crockery", "Gift Sets", "Offers", "Contact"].map((item) => (
+            <ul className="hidden lg:flex space-x-6 text-[#6a4826] font-medium">
+                {navLinks.map((link) => (
                     <motion.li
-                        key={item}
+                        key={link.name}
                         whileHover={{ scale: 1.1 }}
                         transition={{ type: "spring", stiffness: 300 }}
-                        className="relative cursor-pointer transition-all duration-300 group"
-                        style={{ color: textColor }}
+                        className="relative cursor-pointer transition-all duration-300 hover:text-[#d87a38] group"
                     >
-                        {item}
+                        <Link to={link.path}>{link.name}</Link>
+                        {/* Underline Effect */}
                         <motion.span
                             className="absolute left-0 bottom-0 w-0 h-[2px] bg-[#d87a38] transition-all duration-300 group-hover:w-full"
                         />
@@ -65,30 +45,29 @@ export default function Navbar() {
                 ))}
             </ul>
 
-            {/* Search Bar */}
+            {/* Search Bar (Visible on Tablet & Desktop) */}
             <motion.div
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300 }}
-                className="hidden md:flex items-center bg-white bg-opacity-20 px-4 py-2 rounded-lg border border-[#e4a672] shadow-md"
+                className="hidden md:flex items-center bg-white px-4 py-2 rounded-lg border border-[#e4a672] shadow-md"
             >
                 <input
                     type="text"
                     placeholder="Search toys or crockery..."
-                    className="outline-none bg-transparent px-2 py-1 w-64"
-                    style={{ color: textColor }}
+                    className="outline-none bg-transparent px-2 py-1 text-[#6a4826] w-64"
                 />
                 <Search className="w-5 h-5 text-[#d87a38]" />
             </motion.div>
 
             {/* Icons & Mobile Menu Button */}
-            <div className="flex space-x-4">
+            <div className="flex space-x-4 text-[#6a4826]">
                 {[User, Heart, ShoppingCart].map((Icon, index) => (
                     <motion.div
                         key={index}
                         whileHover={{ scale: 1.02 }}
                         transition={{ type: "spring", stiffness: 300 }}
                     >
-                        <Icon className="w-6 h-6 cursor-pointer transition-all duration-300" style={{ color: textColor }} />
+                        <Icon className="w-6 h-6 cursor-pointer hover:text-[#d87a38] transition-all duration-300" />
                     </motion.div>
                 ))}
                 <motion.div
@@ -96,9 +75,8 @@ export default function Navbar() {
                     transition={{ type: "spring", stiffness: 300 }}
                 >
                     <Menu
-                        className="w-6 h-6 lg:hidden cursor-pointer transition-all duration-300"
+                        className="w-6 h-6 lg:hidden cursor-pointer hover:text-[#d87a38] transition-all duration-300"
                         onClick={() => setMobileMenuOpen(true)}
-                        style={{ color: textColor }}
                     />
                 </motion.div>
             </div>
@@ -111,14 +89,14 @@ export default function Navbar() {
                         animate={{ x: 0, opacity: 1 }}
                         exit={{ x: "-100%", opacity: 0 }}
                         transition={{ duration: 0.4, ease: "easeInOut" }}
-                        className="fixed top-0 left-0 w-full h-screen bg-[#F9F4EF] z-[9999] overflow-hidden"
+                        className="fixed top-0 left-0 w-full h-full bg-[#fdf5e6] z-50 shadow-lg rounded-b-xl"
                     >
-                        {/* Close Button & Header */}
+                        {/* Close Button */}
                         <motion.div
                             initial={{ opacity: 0, y: -10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.3, delay: 0.2 }}
-                            className="flex justify-between items-center p-6 bg-[#F9F4EF] border-b border-[#e4a672]"
+                            className="flex justify-between items-center p-6 border-b border-[#e4a672]"
                         >
                             <div className="text-2xl font-bold text-[#d87a38]">PlayPlates</div>
                             <X
@@ -133,21 +111,19 @@ export default function Navbar() {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: 20 }}
                             transition={{ duration: 0.3, delay: 0.1 }}
-                            className="flex flex-col items-center space-y-6 mt-10 text-lg font-medium bg-[#F9F4EF]"
+                            className="flex flex-col items-center space-y-6 mt-10 text-[#6a4826] text-lg font-medium"
                         >
-                            {["Home", "Toys", "Crockery", "Gift Sets", "Offers", "Contact"].map(
-                                (item) => (
-                                    <motion.li
-                                        key={item}
-                                        whileHover={{ scale: 1.1 }}
-                                        transition={{ type: "spring", stiffness: 300 }}
-                                        className="cursor-pointer transition-all duration-300 text-[#6a4826] hover:text-[#d87a38]"
-                                        onClick={() => setMobileMenuOpen(false)}
-                                    >
-                                        {item}
-                                    </motion.li>
-                                )
-                            )}
+                            {navLinks.map((link) => (
+                                <motion.li
+                                    key={link.name}
+                                    whileHover={{ scale: 1.1 }}
+                                    transition={{ type: "spring", stiffness: 300 }}
+                                    className="cursor-pointer hover:text-[#d87a38] transition-all duration-300"
+                                    onClick={() => setMobileMenuOpen(false)}
+                                >
+                                    <Link to={link.path}>{link.name}</Link>
+                                </motion.li>
+                            ))}
                         </motion.ul>
 
                         {/* Mobile Search Bar */}
@@ -161,7 +137,7 @@ export default function Navbar() {
                             <input
                                 type="text"
                                 placeholder="Search toys or crockery..."
-                                className="outline-none bg-transparent px-2 py-1 w-full text-[#6a4826]"
+                                className="outline-none bg-transparent px-2 py-1 text-[#6a4826] w-full"
                             />
                             <Search className="w-5 h-5 text-[#d87a38]" />
                         </motion.div>

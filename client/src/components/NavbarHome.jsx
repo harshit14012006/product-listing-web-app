@@ -29,7 +29,7 @@ export default function NavbarHome() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="absolute top-0 left-0 w-full z-50 px-6 py-4 flex items-center justify-between backdrop-blur-md bg-transparent"
+            className="absolute top-0 left-0 z-50 flex items-center justify-between w-full px-6 py-4 bg-transparent backdrop-blur-md"
             style={{ color: textColor }}
         >
             {/* Logo */}
@@ -44,13 +44,13 @@ export default function NavbarHome() {
             </motion.div>
 
             {/* Desktop Navigation */}
-            <ul className="hidden lg:flex space-x-6 font-medium">
+            <ul className="hidden space-x-6 font-medium lg:flex">
                 {["Home", "Toys", "Crockery", "Gift Sets", "Offers", "Contact"].map((item, index) => (
                     <motion.li
                         key={index}
                         whileHover={{ scale: 1.1 }}
                         transition={{ type: "spring", stiffness: 300 }}
-                        className="relative cursor-pointer transition-all duration-300 group"
+                        className="relative transition-all duration-300 cursor-pointer group"
                     >
                         <Link
                             to={item === "Home" ? "/" : `/${item.toLowerCase().replace(" ", "-")}`}
@@ -75,7 +75,7 @@ export default function NavbarHome() {
                 <input
                     type="text"
                     placeholder="Search toys or crockery..."
-                    className="outline-none bg-transparent px-2 py-1 w-64"
+                    className="w-64 px-2 py-1 bg-transparent outline-none"
                     style={{ color: textColor }}
                 />
                 <Search className="w-5 h-5 text-[#d87a38]" />
@@ -90,7 +90,7 @@ export default function NavbarHome() {
                         transition={{ type: "spring", stiffness: 300 }}
                     >
                         <Link to={index === 0 ? "/account" : index === 1 ? "/wishlist" : "/cart"}>
-                            <Icon className="w-6 h-6 cursor-pointer transition-all duration-300" style={{ color: textColor }} />
+                            <Icon className="w-6 h-6 transition-all duration-300 cursor-pointer" style={{ color: textColor }} />
                         </Link>
                     </motion.div>
                 ))}
@@ -99,7 +99,7 @@ export default function NavbarHome() {
                     transition={{ type: "spring", stiffness: 300 }}
                 >
                     <Menu
-                        className="w-6 h-6 lg:hidden cursor-pointer transition-all duration-300"
+                        className="w-6 h-6 transition-all duration-300 cursor-pointer lg:hidden"
                         onClick={() => setMobileMenuOpen(true)}
                         style={{ color: textColor }}
                     />

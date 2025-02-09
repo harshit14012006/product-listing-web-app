@@ -5,7 +5,9 @@ import Crockery from "./pages/Crockery";
 import GiftSets from "./pages/GiftSets";
 import OffersUser from "./pages/OffersUser";
 import Contact from "./pages/Contact";
-import Footer from './components/Footer'
+import ProductDetail from "./pages/ProductDetail"; // Import Product Detail Page
+import Footer from './components/Footer';
+
 export default function RoutingUser() {
     return (
         <Router>
@@ -16,8 +18,9 @@ export default function RoutingUser() {
                 <Route path="/gift-sets" element={<GiftSets />} />
                 <Route path="/offers" element={<OffersUser />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/product/:id" element={<ProductDetail />} /> {/* Dynamic Route for Product */}
             </Routes>
-            <Footer/>
+            <Footer />
         </Router>
     );
 }
