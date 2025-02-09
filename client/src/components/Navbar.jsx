@@ -1,43 +1,45 @@
+import { Link } from "react-router-dom";
 import { Search, User, Heart, ShoppingCart, Menu, X } from "lucide-react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-    const navLinks = [
-        { name: "Home", path: "/" },
-        { name: "Toys", path: "/toys" },
-        { name: "Crockery", path: "/crockery" },
-        { name: "Gift Sets", path: "/gift-sets" },
-        { name: "Offers", path: "/offers" },
-        { name: "Contact", path: "/contact" }
-    ];
 
     return (
         <motion.nav
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="bg-[#fdf5e6] px-6 py-4 flex items-center justify-between border-b border-[#e4a672] shadow-lg rounded-b-xl"
+            className="fixed top-0 left-0 w-full z-50 bg-[#fdf5e6] px-6 py-4 flex items-center justify-between border-b border-[#e4a672] shadow-lg rounded-b-xl"
         >
+
             {/* Left - Logo */}
-            <Link to="/" className="text-2xl font-bold text-[#d87a38] cursor-pointer">
-                Play<span className="text-[#6a4826]">Plates</span>
-            </Link>
+            <motion.div
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                className="text-2xl font-bold text-[#d87a38] cursor-pointer"
+            >
+                <Link to="/">Play<span className="text-[#6a4826]">Plates</span></Link>
+            </motion.div>
 
             {/* Desktop Navigation */}
             <ul className="hidden lg:flex space-x-6 text-[#6a4826] font-medium">
-                {navLinks.map((link) => (
+                {[
+                    { name: "Home", link: "/" },
+                    { name: "Toys", link: "/toys" },
+                    { name: "Crockery", link: "/crockery" },
+                    { name: "Gift Sets", link: "/gift-sets" },
+                    { name: "Offers", link: "/offers" },
+                    { name: "Contact", link: "/contact" }
+                ].map((item) => (
                     <motion.li
-                        key={link.name}
+                        key={item.name}
                         whileHover={{ scale: 1.1 }}
                         transition={{ type: "spring", stiffness: 300 }}
                         className="relative cursor-pointer transition-all duration-300 hover:text-[#d87a38] group"
                     >
-                        <Link to={link.path}>{link.name}</Link>
-                        {/* Underline Effect */}
+                        <Link to={item.link}>{item.name}</Link>
                         <motion.span
                             className="absolute left-0 bottom-0 w-0 h-[2px] bg-[#d87a38] transition-all duration-300 group-hover:w-full"
                         />
@@ -45,7 +47,7 @@ export default function Navbar() {
                 ))}
             </ul>
 
-            {/* Search Bar (Visible on Tablet & Desktop) */}
+            {/* Search Bar */}
             <motion.div
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300 }}
@@ -113,15 +115,22 @@ export default function Navbar() {
                             transition={{ duration: 0.3, delay: 0.1 }}
                             className="flex flex-col items-center space-y-6 mt-10 text-[#6a4826] text-lg font-medium"
                         >
-                            {navLinks.map((link) => (
+                            {[
+                                { name: "Home", link: "/" },
+                                { name: "Toys", link: "/toys" },
+                                { name: "Crockery", link: "/crockery" },
+                                { name: "Gift Sets", link: "/gift-sets" },
+                                { name: "Offers", link: "/offers" },
+                                { name: "Contact", link: "/contact" }
+                            ].map((item) => (
                                 <motion.li
-                                    key={link.name}
+                                    key={item.name}
                                     whileHover={{ scale: 1.1 }}
                                     transition={{ type: "spring", stiffness: 300 }}
                                     className="cursor-pointer hover:text-[#d87a38] transition-all duration-300"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
-                                    <Link to={link.path}>{link.name}</Link>
+                                    <Link to={item.link}>{item.name}</Link>
                                 </motion.li>
                             ))}
                         </motion.ul>

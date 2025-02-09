@@ -26,12 +26,13 @@ export default function NavbarHome() {
 
     return (
         <motion.nav
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="absolute top-0 left-0 z-50 flex items-center justify-between w-full px-6 py-4 bg-transparent backdrop-blur-md"
-            style={{ color: textColor }}
-        >
+    initial={{ opacity: 0, y: -20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5 }}
+    className="fixed top-0 left-0 z-50 flex items-center justify-between w-full px-6 py-4 bg-transparent backdrop-blur-md"
+    style={{ color: textColor }}
+>
+
             {/* Logo */}
             <motion.div
                 whileHover={{ scale: 1.02 }}
