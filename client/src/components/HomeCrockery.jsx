@@ -1,6 +1,5 @@
 import {useNavigate} from 'react-router-dom'
 import { Heart, ShoppingCart } from "lucide-react";
-
 function HomeCrockery() {
     const products = [
         {

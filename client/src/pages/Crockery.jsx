@@ -1,8 +1,11 @@
 import React from 'react'
+import Navbar from '../components/Navbar'
 
 function Crockery() {
   return (
-    <div>Crockery</div>
+    <div>
+      <Navbar/>
+    </div>
   )
 }
 

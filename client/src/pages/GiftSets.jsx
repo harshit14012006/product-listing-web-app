@@ -1,8 +1,11 @@
 import React from 'react'
+import Navbar from '../components/Navbar'
 
 function GiftSets() {
   return (
-    <div>GiftSets</div>
+    <div>
+      <Navbar/>
+    </div>
   )
 }
 

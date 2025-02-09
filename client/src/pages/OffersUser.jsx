@@ -1,8 +1,11 @@
 import React from 'react'
+import Navbar from '../components/Navbar'
 
 function OffersUser() {
   return (
-    <div>OffersUser</div>
+    <div>
+      <Navbar/>
+    </div>
   )
 }
 
