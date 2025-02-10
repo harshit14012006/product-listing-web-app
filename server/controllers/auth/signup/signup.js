@@ -1,8 +1,8 @@
-import dbClient from "../../../prisma/dbClient";
+import dbClient from "../../../prisma/dbClient.js";
 import bcryptjs from "bcryptjs";
 
 export async function signup(req, res) {
-  const { name, email, password } = await req.json();
+  const { name, email, password } = req.body;
 
   if (!name || !email || !password) {
     return res.status(400).json({ message: "Please fill all fields" });
@@ -29,10 +29,9 @@ export async function signup(req, res) {
       },
     });
 
-    return res
-      .status(200)
-      .json({ message: "Signup successfully" }, { newUser });
+    return res.status(200).json({ message: "Signup successfully", newUser });
   } catch (error) {
+    console.log(error);
     return res.status(500).json({ message: "Something went wrong" });
   }
 }

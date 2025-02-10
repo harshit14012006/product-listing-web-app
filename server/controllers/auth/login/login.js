@@ -1,9 +1,9 @@
-import dbClient from "../../../prisma/dbClient";
+import dbClient from "../../../prisma/dbClient.js";
 import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 export async function login(req, res) {
-  const { email, password } = await req.json();
+  const { email, password } = req.body;
 
   if (!email || !password) {
     return res.status(400).json({ message: "Please fill all fields" });

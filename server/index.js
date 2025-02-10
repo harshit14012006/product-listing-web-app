@@ -1,19 +1,25 @@
 import express from "express";
 import cookieParser from "cookie-parser";
-import bodyParser from "body-parser";
-import { configDotenv } from "dotenv";
+import dotenv from "dotenv";
 import cors from "cors";
 
-import authRoutes from "./routes/auth/authRoutes";
+import authRoutes from "./routes/auth/authRoutes.js";
 
 const server = express();
 
-configDotenv();
+dotenv.config();
 
-server.use(cors());
+server.use(
+  cors({
+    origin: process.env.CLIENT_URL,
+  })
+);
 server.use(cookieParser());
-server.use(bodyParser.json());
-server.use(bodyParser.urlencoded({ extended: true }));
+server.use(express.json());
+
+server.get("/", (req, res) => {
+  res.send("Server is running");
+});
 
 server.use("/auth", authRoutes);
 
