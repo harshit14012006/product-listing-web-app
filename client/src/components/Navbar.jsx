@@ -24,7 +24,7 @@ export default function Navbar() {
             </motion.div>
 
             {/* Desktop Navigation */}
-            <ul className="hidden lg:flex space-x-6 text-[#6a4826] font-medium">
+            <ul className="hidden lg:flex space-x-5 text-[#6a4826] font-medium">
                 {[
                     { name: "Home", link: "/" },
                     { name: "Toys", link: "/toys" },

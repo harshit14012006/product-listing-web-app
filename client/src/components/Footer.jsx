@@ -4,7 +4,7 @@ import { Facebook, Instagram, Twitter, Mail, Phone, MapPin } from "lucide-react"
 export default function Footer() {
     return (
         <footer className="bg-[#184a45] text-[#e5ede9] py-10">
-            <div className="container mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="container grid grid-cols-1 gap-8 px-6 mx-auto md:px-12 md:grid-cols-3">
                 {/* Logo & About */}
                 <div>
                     <h2 className="text-2xl font-bold text-[#d87a38]">PlayPlates</h2>
@@ -49,13 +49,14 @@ export default function Footer() {
 
             {/* Social Media & Copyright */}
             <div className="mt-8 border-t border-[#c5dad3] pt-6 text-center">
-                <div className="flex justify-center space-x-6 mb-4">
-                    {[Facebook, Instagram, Twitter].map((Icon, index) => (
-                        <Icon key={index} className="w-6 h-6 cursor-pointer hover:text-[#d87a38] transition" />
-                    ))}
-                </div>
-                <p className="text-sm text-[#c5dad3]">© {new Date().getFullYear()} PlayPlates. All rights reserved.</p>
-            </div>
+    <div className="flex justify-center gap-6 mb-4">
+        {[Facebook, Instagram, Twitter].map((Icon, index) => (
+            <Icon key={index} className="w-6 h-6 cursor-pointer hover:text-[#d87a38] transition" />
+        ))}
+    </div>
+    <p className="text-sm text-[#c5dad3]">© {new Date().getFullYear()} PlayPlates. All rights reserved.</p>
+</div>
+
         </footer>
     );
 }
