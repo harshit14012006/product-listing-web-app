@@ -1,10 +1,12 @@
 import React from 'react'
-import RoutingUser from './RoutingUser'
+import RoutingUser from './routes/UserRoutes'
+import AdminRoutes from './routes/AdminRoutes'
 
 function App() {
   return (
     <div>
-      <RoutingUser/>
+      {/* <RoutingUser/> */}
+      <AdminRoutes/>
     </div>
   )
 }

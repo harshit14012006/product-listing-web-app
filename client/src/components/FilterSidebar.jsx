@@ -46,13 +46,13 @@ function FilterSidebar({ filters, onFilterChange }) {
 
       {/* Sidebar Container */}
       <div
-        className={`fixed inset-0 bg-black/40 transition-opacity duration-300 ${
+        className={`fixed inset-0 bg-black/40 z-30 transition-opacity duration-300 ${
           isOpen ? "opacity-100 visible" : "opacity-0 invisible"
         } md:relative md:opacity-100 md:visible md:bg-transparent`}
       >
         {/* Sidebar Panel */}
         <div
-          className={`fixed left-0 top-0 w-72 h-full bg-[#F5ECE3] shadow-lg p-6 transform transition-transform duration-300 ${
+          className={`fixed left-0 top-[60px] w-72 h-full bg-[#F5ECE3] shadow-lg p-6 transform transition-transform duration-300 ${
             isOpen ? "translate-x-0" : "-translate-x-full"
           } md:relative md:w-full md:translate-x-0 md:h-auto md:p-6`}
         >
