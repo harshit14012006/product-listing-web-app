@@ -9,22 +9,25 @@ datasource db {
 
 
 model User {
-  id       String  @id @default(cuid()) @map("_id")
-  email    String  @unique
-  name     String?
-  password String?
-  role     String? @default("USER")
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id       String     @id @default(cuid()) @map("_id")
+  email    String     @unique
+  name     String
+  password String
+  role     String?    @default("USER")
+  crockery Crockery[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
 }
 
 model Crockery {
-  id        String  @id @default(cuid()) @map("_id")
+  id        String   @id @default(cuid()) @map("_id")
   title     String
   image     String
   category  String
   material  String
   price     Float
+  userId    String  
+  user      User     @relation(fields: [userId], references: [id])
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
