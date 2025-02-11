@@ -46,7 +46,7 @@ export default function NavbarHome() {
 
             {/* Desktop Navigation */}
             <ul className="hidden space-x-6 font-medium lg:flex">
-                {["Home", "Toys", "Crockery", "Gift Sets", "Offers", "Contact"].map((item, index) => (
+                {["Home", "Toys", "Crockery", "Gift Sets", "Aboutus", "Contact"].map((item, index) => (
                     <motion.li
                         key={index}
                         whileHover={{ scale: 1.1 }}
@@ -134,7 +134,6 @@ export default function NavbarHome() {
                         </motion.div>
 
                         {/* Mobile Menu Items */}
-                        {/* Mobile Menu Items */}
                         <motion.ul
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -142,7 +141,7 @@ export default function NavbarHome() {
                             transition={{ duration: 0.3, delay: 0.1 }}
                             className="flex flex-col items-center space-y-6 mt-10 text-lg font-medium bg-[#F9F4EF]"
                         >
-                            {["Home", "Toys", "Crockery", "Gift Sets", "Offers", "Contact"].map((item, index) => (
+                            {["Home", "Toys", "Crockery", "Gift Sets", "Aboutus", "Contact"].map((item, index) => (
                                 <motion.li
                                     key={index}
                                     whileHover={{ scale: 1.1 }}

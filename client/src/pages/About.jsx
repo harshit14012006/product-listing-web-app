@@ -1,9 +1,12 @@
 import { motion } from "framer-motion";
 import { Sparkles, ShoppingCart, Gift, Smile, Users, Shield, CheckCircle, Heart, Award, Globe, Truck, Clock, Star, Leaf, Coffee, Package,ArrowRight,Target } from "lucide-react";
 import { useEffect, useRef } from "react";
+import Navbar from "../components/Navbar";
 export default function AboutUs() {
     return (
-        <section className="relative w-full bg-gradient-to-r from-[#F9F4EF] to-[#E3F2FD]">
+        <>
+        <Navbar />
+        <section className="relative w-full bg-gradient-to-r from-[#F9F4EF] to-[#E3F2FD] pt-20">
             {/* Hero Section */}
             <div className="relative w-full h-[70vh] flex items-center justify-center px-6 lg:px-20 bg-gradient-to-r from-[#F9F4EF] to-[#E3F2FD] overflow-hidden">
             {/* Background Animation */}
@@ -331,5 +334,6 @@ export default function AboutUs() {
                 </div>
             </div>
         </section>
+        </>
     );
 }

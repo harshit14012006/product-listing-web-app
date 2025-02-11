@@ -30,7 +30,7 @@ export default function Navbar() {
                     { name: "Toys", link: "/toys" },
                     { name: "Crockery", link: "/crockery" },
                     { name: "Gift Sets", link: "/gift-sets" },
-                    { name: "Offers", link: "/offers" },
+                    { name: "Aboutus", link: "/about" },
                     { name: "Contact", link: "/contact" }
                 ].map((item) => (
                     <motion.li
@@ -120,7 +120,7 @@ export default function Navbar() {
                                 { name: "Toys", link: "/toys" },
                                 { name: "Crockery", link: "/crockery" },
                                 { name: "Gift Sets", link: "/gift-sets" },
-                                { name: "Offers", link: "/offers" },
+                                { name: "Aboutus", link: "/about" },
                                 { name: "Contact", link: "/contact" }
                             ].map((item) => (
                                 <motion.li
