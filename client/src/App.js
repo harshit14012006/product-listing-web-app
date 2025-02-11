@@ -1,10 +1,11 @@
 import React from 'react'
 import RoutingUser from './RoutingUser'
-
+import AboutUs from './pages/About'
 function App() {
   return (
     <div>
-      <RoutingUser/>
+      <AboutUs />
+      {/* <RoutingUser/> */}
     </div>
   )
 }
