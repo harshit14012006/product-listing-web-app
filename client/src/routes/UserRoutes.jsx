@@ -1,17 +1,17 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Toys from "./pages/Toys";
-import Crockery from "./pages/Crockery";
-import GiftSets from "./pages/GiftSets";
-import OffersUser from "./pages/OffersUser";
-import Contact from "./pages/Contact";
-import ProductDetail from "./pages/ProductDetail"; // Import Product Detail Page
-import Footer from './components/Footer';
-import AuthForm from "./pages/AuthForm";
+import Home from "../pages/Home";
+import Toys from "../pages/Toys";
+import Crockery from "../pages/Crockery";
+import GiftSets from "../pages/GiftSets";
+import OffersUser from "../pages/OffersUser";
+import Contact from "../pages/Contact";
+import ProductDetail from "../pages/ProductDetail"; // Import Product Detail Page
+import Footer from '../components/Footer';
+import AuthForm from "../pages/AuthForm";
 
 export default function RoutingUser() {
     return (
-        <Router>
+        <div>
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/toys" element={<Toys />} />
@@ -23,6 +23,6 @@ export default function RoutingUser() {
                 <Route path="/product/:id" element={<ProductDetail />} /> {/* Dynamic Route for Product */}
             </Routes>
             <Footer />
-        </Router>
+            </div>
     );
 }

@@ -11,7 +11,7 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="fixed top-0 left-0 w-full z-50 bg-[#fdf5e6] px-6 py-4 flex items-center justify-between border-b border-[#e4a672] shadow-lg rounded-b-xl"
+            className="fixed top-0 left-0 w-full z-40 bg-[#fdf5e6] px-6 py-4 flex items-center justify-between border-b border-[#e4a672] shadow-lg rounded-b-xl"
         >
 
             {/* Left - Logo */}
@@ -24,7 +24,7 @@ export default function Navbar() {
             </motion.div>
 
             {/* Desktop Navigation */}
-            <ul className="hidden lg:flex space-x-6 text-[#6a4826] font-medium">
+            <ul className="hidden lg:flex space-x-5 text-[#6a4826] font-medium">
                 {[
                     { name: "Home", link: "/" },
                     { name: "Toys", link: "/toys" },

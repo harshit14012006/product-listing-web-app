@@ -1,11 +1,12 @@
 import React from 'react'
-import RoutingUser from './RoutingUser'
-import AboutUs from './pages/About'
+import UserRoutes from './routes/UserRoutes'
+import AdminRoutes from './routes/AdminRoutes'
+
 function App() {
   return (
     <div>
-      <AboutUs />
-      {/* <RoutingUser/> */}
+      {/* <UserRoutes/> */}
+      <AdminRoutes/>
     </div>
   )
 }

@@ -55,7 +55,7 @@ function AuthForm() {
           <div className="hidden w-1/2 md:block">
             <img
               className="object-cover w-full h-full"
-              src="https://images.unsplash.com/photo-1617957743565-3481a8f14530?q=80&w=1080"
+              src="https://nestasia.in/cdn/shop/products/all-purpose-serving-pot-with-lid-dark-green.png?v=1725879814&width=330"
               alt="Authentication"
             />
           </div>
