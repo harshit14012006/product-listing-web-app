@@ -17,3 +17,14 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model Crockery {
+  id        String  @id @default(cuid()) @map("_id")
+  title     String
+  image     String
+  category  String
+  material  String
+  price     Float
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
