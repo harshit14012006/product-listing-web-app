@@ -6,8 +6,8 @@ function App() {
   return (
     <div>
 
-      <UserRoutes/>
-      {/* <AdminRoutes/> */}
+      {/* <UserRoutes/> */}
+      <AdminRoutes/>
     </div>
   )
 }

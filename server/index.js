@@ -6,6 +6,7 @@ import { PrismaClient } from "@prisma/client";
 
 dotenv.config();
 import authRoutes from "./routes/auth/authRoutes.js";
+import toyRoutes from "./routes/auth/toyRoutes.js"; // Import toy routes
 
 const server = express();
 const prisma = new PrismaClient(); 
@@ -23,6 +24,7 @@ server.get("/", (req, res) => {
 });
 
 server.use("/auth", authRoutes);
+server.use("/toys", toyRoutes); // Use toy routes
 
 const connectDB = async () => {
   try {
