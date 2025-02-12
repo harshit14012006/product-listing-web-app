@@ -5,7 +5,6 @@ import AdminRoutes from './routes/AdminRoutes'
 function App() {
   return (
     <div>
-
       {/* <UserRoutes/> */}
       <AdminRoutes/>
     </div>
